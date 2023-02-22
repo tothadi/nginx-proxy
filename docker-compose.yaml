@@ -1,9 +1,5 @@
 version: '3.3'
 
-networks:
-  default:
-    name: nginx-proxy
-
 services:
   nginx:
     user: root

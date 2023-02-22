@@ -1,15 +1,16 @@
-#!/bin/bash
+#!/bin/bash -v
+
 HOSTNAMES=""
 
 for host in $HOST_NAMES; do
 	HOSTNAMES="$HOSTNAMES -d $host"
 done
 
-certonly \
+certbot certonly \
     --dns-cloudflare \
-    --dns-cloudflare-credentials /certs/cloudflare.ini \
+    --dns-cloudflare-credentials /dependencies/cloudflare.ini \
     $HOSTNAMES \
-	--config-dir /certs \
+	--config-dir /etc/nginx/certs \
     --email $CF_EMAIL \
     --agree-tos \
     --server https://acme-v02.api.letsencrypt.org/directory

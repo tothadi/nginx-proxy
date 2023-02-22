@@ -1,9 +1,5 @@
 version: '3.3'
 
-networks:
-  default:
-    name: nginx-proxy
-
 services:
   nginx:
     user: root
@@ -12,8 +8,8 @@ services:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8000:80"
-      - "4430:443"
+      - "80:80"
+      - "443:443"
     restart: always
     environment:
       DOMAINS: "${DOMAINS:-}"

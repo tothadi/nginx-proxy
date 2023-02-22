@@ -1,0 +1,11 @@
+FROM jwilder/nginx-proxy
+
+RUN mkdir /temp
+
+WORKDIR /temp
+
+COPY ./nginx/* ./
+
+RUN chmod +x ./configure_nginx.sh
+
+CMD [ "./configure_nginx.sh" ]

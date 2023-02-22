@@ -1,0 +1,2 @@
+# run hello.sh at midnight on the first of the month
+0 0 1 * * /certs/generate_certs.sh

@@ -16,7 +16,9 @@ done
 echo dns_cloudflare_email=$CF_EMAIL > /dependencies/cloudflare.ini
 echo dns_cloudflare_api_key=$CF_API_KEY >> /dependencies/cloudflare.ini
 
-# /dependencies/generate_certs.sh 
+chmod 600 /dependencies/cloudflare.ini
+
+/dependencies/generate_certs.sh 
 
 crontab /dependencies/crontab
 cron -f &

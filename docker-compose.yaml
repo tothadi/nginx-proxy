@@ -1,15 +1,19 @@
 version: '3.3'
 
+networks:
+  default:
+    name: nginx-proxy
+
 services:
   nginx:
     user: root
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    build: .
+    volumes:
+      - ${VOLUME_PATH:-}/nginx/conf.d:/etc/nginx/conf.d
+      - ${VOLUME-PATH:-}/nginx/certs:/etc/nginx/certs
     ports:
       - "80:80"
       - "443:443"
-    restart: always
     environment:
       DOMAINS: "${DOMAINS:-}"
       HOST_NAMES: "${HOST_NAMES:-}"
